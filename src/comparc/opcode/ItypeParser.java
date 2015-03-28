@@ -9,7 +9,6 @@ package comparc.opcode;
  *
  * @author aids
  */
-public abstract class GenerateOpcode {
-    
+public class ItypeParser extends Parser{
     
 }
