@@ -71,16 +71,19 @@ public class MainPanel extends javax.swing.JPanel {
         offsetlbl = new javax.swing.JLabel();
         codelbl = new javax.swing.JLabel();
         addbttn = new javax.swing.JButton();
-        compilebttn = new javax.swing.JButton();
+        fullstepbttn = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         datatbl = new javax.swing.JTable();
         datalbl = new javax.swing.JLabel();
         rdcbox = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         codetbl = new javax.swing.JTable();
-        resetbttn = new javax.swing.JButton();
+        clearbttn = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        singlestepbttn1 = new javax.swing.JButton();
+        resetbttn1 = new javax.swing.JButton();
+        delbttn = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,7 +98,10 @@ public class MainPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTable1);
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         rslbl.setText("RS");
+        add(rslbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 25, -1, -1));
 
         registertbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -155,7 +161,10 @@ public class MainPanel extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(registertbl);
 
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(547, 47, 230, 608));
+
         rtlbl.setText("RT");
+        add(rtlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(279, 25, -1, -1));
 
         rscbox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "R0", "R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9", "R10", "R11", "R12", "R13", "R14", "R15", "R16", "R17", "R18", "R19", "R20", "R21", "R22", "R23", "R24", "R25", "R26", "R27", "R28", "R29", "R30", "R31" }));
         rscbox.addActionListener(new java.awt.event.ActionListener() {
@@ -163,6 +172,7 @@ public class MainPanel extends javax.swing.JPanel {
                 rscboxActionPerformed(evt);
             }
         });
+        add(rscbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 49, 68, -1));
 
         commandcbox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "DADDU", "DMULT", "OR", "DSLLV", "SLT", "BNE", "LW", "LWU", "SW", "DADDIU", "ANDI", "J" }));
         commandcbox.addActionListener(new java.awt.event.ActionListener() {
@@ -170,14 +180,17 @@ public class MainPanel extends javax.swing.JPanel {
                 commandcboxActionPerformed(evt);
             }
         });
+        add(commandcbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 47, 105, 29));
 
         offsettxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 offsettxtActionPerformed(evt);
             }
         });
+        add(offsettxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 47, 83, -1));
 
         commandlbl.setText("Command");
+        add(commandlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 25, -1, -1));
 
         rtcbox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "R0", "R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9", "R10", "R11", "R12", "R13", "R14", "R15", "R16", "R17", "R18", "R19", "R20", "R21", "R22", "R23", "R24", "R25", "R26", "R27", "R28", "R29", "R30", "R31" }));
         rtcbox.addActionListener(new java.awt.event.ActionListener() {
@@ -185,12 +198,16 @@ public class MainPanel extends javax.swing.JPanel {
                 rtcboxActionPerformed(evt);
             }
         });
+        add(rtcbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(279, 49, 72, -1));
 
         rdlbl.setText("RD");
+        add(rdlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 25, -1, -1));
 
         offsetlbl.setText("Offset");
+        add(offsetlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 25, -1, -1));
 
         codelbl.setText("Code");
+        add(codelbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 82, -1, -1));
 
         addbttn.setText("Add");
         addbttn.addActionListener(new java.awt.event.ActionListener() {
@@ -198,13 +215,15 @@ public class MainPanel extends javax.swing.JPanel {
                 addbttnActionPerformed(evt);
             }
         });
+        add(addbttn, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, 81, -1));
 
-        compilebttn.setText("Compile");
-        compilebttn.addActionListener(new java.awt.event.ActionListener() {
+        fullstepbttn.setText("Full Execution");
+        fullstepbttn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                compilebttnActionPerformed(evt);
+                fullstepbttnActionPerformed(evt);
             }
         });
+        add(fullstepbttn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1049, 447, 262, 84));
 
         datatbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1254,9 +1273,13 @@ public class MainPanel extends javax.swing.JPanel {
         });
         jScrollPane4.setViewportView(datatbl);
 
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 386, 513, 269));
+
         datalbl.setText("Data");
+        add(datalbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 364, -1, -1));
 
         rdcbox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "R0", "R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9", "R10", "R11", "R12", "R13", "R14", "R15", "R16", "R17", "R18", "R19", "R20", "R21", "R22", "R23", "R24", "R25", "R26", "R27", "R28", "R29", "R30", "R31" }));
+        add(rdcbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 49, 68, -1));
 
         codetbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -2306,12 +2329,15 @@ public class MainPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(codetbl);
 
-        resetbttn.setText("Reset");
-        resetbttn.addActionListener(new java.awt.event.ActionListener() {
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 104, 513, 254));
+
+        clearbttn.setText("Clear Instruction");
+        clearbttn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetbttnActionPerformed(evt);
+                clearbttnActionPerformed(evt);
             }
         });
+        add(clearbttn, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 543, 260, 84));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -2326,99 +2352,31 @@ public class MainPanel extends javax.swing.JPanel {
         ));
         jScrollPane5.setViewportView(jTable2);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(commandcbox, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(commandlbl))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rdcbox, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rdlbl))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rscbox, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rslbl))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rtcbox, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rtlbl))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(offsetlbl)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(offsettxt, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(addbttn, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(codelbl)
-                            .addComponent(jScrollPane1)
-                            .addComponent(datalbl)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(compilebttn, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(resetbttn, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(commandlbl)
-                            .addComponent(rdlbl))
-                        .addGap(1, 1, 1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rslbl, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(offsetlbl)
-                                .addComponent(rtlbl)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(compilebttn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(resetbttn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(commandcbox, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(rdcbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(rscbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(rtcbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(offsettxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(addbttn)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(codelbl)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(datalbl)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 47, 528, 388));
+
+        singlestepbttn1.setText("Single Step Execution");
+        singlestepbttn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                singlestepbttn1ActionPerformed(evt);
+            }
+        });
+        add(singlestepbttn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 447, 260, 84));
+
+        resetbttn1.setText("Reset");
+        resetbttn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetbttn1ActionPerformed(evt);
+            }
+        });
+        add(resetbttn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1049, 543, 262, 84));
+
+        delbttn.setText("delete");
+        delbttn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delbttnActionPerformed(evt);
+            }
+        });
+        add(delbttn, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void rscboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rscboxActionPerformed
@@ -2480,24 +2438,38 @@ public class MainPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_addbttnActionPerformed
 
-    private void compilebttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compilebttnActionPerformed
+    private void fullstepbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fullstepbttnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_compilebttnActionPerformed
+    }//GEN-LAST:event_fullstepbttnActionPerformed
 
-    private void resetbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetbttnActionPerformed
+    private void clearbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearbttnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_resetbttnActionPerformed
+    }//GEN-LAST:event_clearbttnActionPerformed
+
+    private void singlestepbttn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singlestepbttn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_singlestepbttn1ActionPerformed
+
+    private void resetbttn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetbttn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_resetbttn1ActionPerformed
+
+    private void delbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delbttnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_delbttnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addbttn;
+    private javax.swing.JButton clearbttn;
     private javax.swing.JLabel codelbl;
     private javax.swing.JTable codetbl;
     private javax.swing.JComboBox commandcbox;
     private javax.swing.JLabel commandlbl;
-    private javax.swing.JButton compilebttn;
     private javax.swing.JLabel datalbl;
     private javax.swing.JTable datatbl;
+    private javax.swing.JButton delbttn;
+    private javax.swing.JButton fullstepbttn;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -2510,10 +2482,11 @@ public class MainPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox rdcbox;
     private javax.swing.JLabel rdlbl;
     private javax.swing.JTable registertbl;
-    private javax.swing.JButton resetbttn;
+    private javax.swing.JButton resetbttn1;
     private javax.swing.JComboBox rscbox;
     private javax.swing.JLabel rslbl;
     private javax.swing.JComboBox rtcbox;
     private javax.swing.JLabel rtlbl;
+    private javax.swing.JButton singlestepbttn1;
     // End of variables declaration//GEN-END:variables
 }
