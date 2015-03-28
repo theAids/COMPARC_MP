@@ -25,17 +25,25 @@ public class MainPanel extends javax.swing.JPanel {
         
         int addr = 0;
         
+        /*
+         * initialize code table address space
+         */
         for(int i=0; i<1024;i++){
         codetbl.setValueAt(String.format("%4s", Integer.toHexString(addr)).replace(' ', '0'), i, 0);
         addr+=4;
         }
         
         addr = 8192;
-        
+        /*
+         * initialize data table address space
+         */
         for(int i=0; i<1024;i++){
         datatbl.setValueAt(String.format("%4s", Integer.toHexString(addr)).replace(' ', '0'), i, 0);
-        addr+=4;
+        datatbl.setValueAt(String.format("%16s", Integer.toHexString(0)).replace(' ', '0'), i, 1);
+        addr+=8;
         }
+        
+        offsettxt.disable();
     }
 
     /**
@@ -2396,7 +2404,15 @@ public class MainPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_rscboxActionPerformed
 
     private void commandcboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commandcboxActionPerformed
-        // TODO add your handling code here:
+        String comm = commandcbox.getSelectedItem().toString();
+        if(comm.equals("DADDU") || comm.equals("DMULT") || comm.equals("OR") || comm.equals("DSLLV") || comm.equals("SLT")){
+            offsettxt.disable();
+        }else{
+            offsettxt.enable();
+        }
+        
+        
+        
     }//GEN-LAST:event_commandcboxActionPerformed
 
     private void offsettxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_offsettxtActionPerformed
