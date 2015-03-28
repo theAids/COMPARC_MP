@@ -2405,12 +2405,42 @@ public class MainPanel extends javax.swing.JPanel {
 
     private void commandcboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commandcboxActionPerformed
         String comm = commandcbox.getSelectedItem().toString();
-        if(comm.equals("DADDU") || comm.equals("DMULT") || comm.equals("OR") || comm.equals("DSLLV") || comm.equals("SLT")){
-            offsettxt.disable();
-        }else{
-            offsettxt.enable();
+        switch (comm) {
+            case "DADDU":
+            case "DMULT":
+            case "OR":
+            case "DSLLV":
+            case "SLT":
+                offsettxt.disable();
+                rdcbox.enable();
+                rscbox.enable();
+                rtcbox.enable();
+                break;
+            case "DADDIU":
+            case "ANDI":
+            case "LWU":
+            case "LW":
+                offsettxt.enable();
+                rdcbox.enable();
+                rscbox.enable();
+                rtcbox.disable();
+                break;
+            case "BNE":
+            case "SW":
+                offsettxt.enable();
+                rdcbox.disable();
+                rscbox.enable();
+                rtcbox.enable();
+                break;
+            default:
+                offsettxt.enable();
+                rdcbox.disable();
+                rscbox.disable();
+                rtcbox.disable();
+                break;
         }
         
+        this.repaint();
         
         
     }//GEN-LAST:event_commandcboxActionPerformed
