@@ -10,6 +10,11 @@ import javax.swing.table.TableModel;
  * @author Tricia
  */
 public class RegisterSwitches {
+    
+    public RegisterSwitches(){
+        String reg_status[] = new String[32];
+    }
+    
     public static int rowNum(String reg){
         int row = -1;
         switch(reg){
@@ -119,5 +124,14 @@ public class RegisterSwitches {
             if ( Character.digit(hexstr.charAt(i), 16) == -1 )
                 return false;
         return true;
+    }
+    
+    public static String piplineStage(){
+        String stage = "";
+        return stage;
+    }
+    
+    public static void registerStatus(String rs){
+        
     }
 }

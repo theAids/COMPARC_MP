@@ -33,7 +33,8 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
     Parser rparse = new RtypeParser();
     Parser iparse = new ItypeParser();
     Parser jparse = new JtypeParser();
-    
+    int lin = 0, comm_count = 0;
+    String[] imm_storage = new String[15];
 
     public MainPanel() {
         initComponents();
@@ -2571,10 +2572,10 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
         comm = commandcbox.getSelectedItem().toString();
 
         String immediate_value = offsettxt.getText();
-
+        
         String inst = null;
         String opcode = null;
-        
+        String reformat = null;
         /*
          * disable unnecessary options
          */
@@ -2592,7 +2593,9 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
             case "ANDI":
             case "LWU":
             case "LW":
-                if(RegisterSwitches.checkIfHex(immediate_value)==true){
+                if(RSCase.checkIfHex(immediate_value)==true){
+                    reformat = String.format("%16s", immediate_value).replace(' ', '0');
+                    imm_storage[comm_count]=reformat;
                     
                 }
                 else{
@@ -2614,7 +2617,7 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
         codetbl.setValueAt(opcode, line, 1);
         line++;
         codetbl.repaint();
-
+        comm_count++;
         
     }//GEN-LAST:event_addbttnActionPerformed
 
@@ -2633,10 +2636,13 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
         }
         else{
             int row;
-            row = RegisterSwitches.rowNum(rs);
+            row = RSCase.rowNum(rs);
             //registertbl.setValueAt(row, row, 2);
-            //if {commtype = "I-Type"} ... etc
+            if (commtype == "I-Type"){
+                
+            }
         }
+        
     }//GEN-LAST:event_singlestepbttn1ActionPerformed
 
     private void resetbttn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetbttn1ActionPerformed
@@ -2650,6 +2656,7 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
     private void rdcboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdcboxActionPerformed
         // TODO add your handling code here:
         rd = rdcbox.getSelectedItem().toString();
+        use
     }//GEN-LAST:event_rdcboxActionPerformed
 
 
