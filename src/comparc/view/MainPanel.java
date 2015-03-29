@@ -7,22 +7,38 @@ package comparc.view;
 
 import javax.swing.table.TableColumn;
 import comparc.opcode.*;
-
+import javax.swing.event.*;
+import javax.swing.table.TableModel;
+import comparc.extra.RegisterSwitches;
 /**
  *
  * @author aids
  */
-public class MainPanel extends javax.swing.JPanel {
+public class MainPanel extends javax.swing.JPanel implements TableModelListener{
 
     /**
      * Creates new form MainPanel
      */
+    String comm; //mips64 command variable
+    String commtype;
+    String rd;
+    String rs;
+    String rt;
+    byte rd_cont; // not sure of this one
+    byte rs_cont;
+    byte rt_cont;
+    RegisterSwitches RSCase = new RegisterSwitches();
+    //byte/int for textbox
     public MainPanel() {
         initComponents();
         initialize();
     }
     
     private void initialize(){
+        rd_cont = 0; 
+        rs_cont = 0;
+        rt_cont = 0;
+        commtype = "";
         
         int addr = 0;
         
@@ -1260,6 +1276,11 @@ public class MainPanel extends javax.swing.JPanel {
         datalbl.setText("Data");
 
         rdcbox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "R0", "R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9", "R10", "R11", "R12", "R13", "R14", "R15", "R16", "R17", "R18", "R19", "R20", "R21", "R22", "R23", "R24", "R25", "R26", "R27", "R28", "R29", "R30", "R31" }));
+        rdcbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdcboxActionPerformed(evt);
+            }
+        });
 
         codetbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -2478,10 +2499,15 @@ public class MainPanel extends javax.swing.JPanel {
 
     private void rscboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rscboxActionPerformed
         // TODO add your handling code here:
+        rs = rscbox.getSelectedItem().toString();
     }//GEN-LAST:event_rscboxActionPerformed
 
     private void commandcboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commandcboxActionPerformed
-        String comm = commandcbox.getSelectedItem().toString();
+        comm = commandcbox.getSelectedItem().toString();
+        /*
+         * disable unnecessary options
+         */
+        //String commandName = "";
         switch (comm) {
             case "DADDU":
             case "DMULT":
@@ -2501,6 +2527,7 @@ public class MainPanel extends javax.swing.JPanel {
                 rdcbox.enable();
                 rscbox.enable();
                 rtcbox.disable();
+                commtype = "I-Type";
                 break;
             case "BNE":
             case "SW":
@@ -2528,10 +2555,44 @@ public class MainPanel extends javax.swing.JPanel {
 
     private void rtcboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rtcboxActionPerformed
         // TODO add your handling code here:
+        rt = rtcbox.getSelectedItem().toString();
     }//GEN-LAST:event_rtcboxActionPerformed
 
     private void addbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbttnActionPerformed
+        comm = commandcbox.getSelectedItem().toString();
+        String immediate_value = offsettxt.getText();
+        /*
+         * disable unnecessary options
+         */
+        switch (comm) {
+            case "DADDU":
+            case "DMULT":
+            case "OR":
+            case "DSLLV":
+            case "SLT":
+                
+                break;
+            case "DADDIU":
+            case "ANDI":
+            case "LWU":
+            case "LW":
+                if(RegisterSwitches.checkIfHex(immediate_value)==true){
+                    
+                }
+                else{
+                    //nope
+                }
+                break;
+            case "BNE":
+            case "SW":
+                
+                break;
+            default:
+                
+                break;
+        }
         
+        this.repaint();
         
     }//GEN-LAST:event_addbttnActionPerformed
 
@@ -2545,6 +2606,15 @@ public class MainPanel extends javax.swing.JPanel {
 
     private void singlestepbttn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singlestepbttn1ActionPerformed
         // TODO add your handling code here:
+        if(rs_cont == 0 && rt_cont == 0){
+            
+        }
+        else{
+            int row;
+            row = RegisterSwitches.rowNum(rs);
+            //registertbl.setValueAt(row, row, 2);
+            //if {commtype = "I-Type"} ... etc
+        }
     }//GEN-LAST:event_singlestepbttn1ActionPerformed
 
     private void resetbttn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetbttn1ActionPerformed
@@ -2554,6 +2624,11 @@ public class MainPanel extends javax.swing.JPanel {
     private void delbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delbttnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_delbttnActionPerformed
+
+    private void rdcboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdcboxActionPerformed
+        // TODO add your handling code here:
+        rd = rdcbox.getSelectedItem().toString();
+    }//GEN-LAST:event_rdcboxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -2586,4 +2661,9 @@ public class MainPanel extends javax.swing.JPanel {
     private javax.swing.JLabel rtlbl;
     private javax.swing.JButton singlestepbttn1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void tableChanged(TableModelEvent tme) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

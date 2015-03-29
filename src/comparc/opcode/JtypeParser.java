@@ -9,18 +9,18 @@ package comparc.opcode;
  *
  * @author aids
  */
-public abstract class Parser {
+public class JtypeParser extends Parser{
     
-    public Parser(){
-    
+    public JtypeParser(){
+        super();
     }
     
+    //@Override
     private String genInst(String command, String param1, String param2, String param3){
         String inst;
         
-        inst = command+' '+param1+", "+param2+", "+param3;
+        inst = command+' '+param1;
         
         return inst;
     }
-    
 }
