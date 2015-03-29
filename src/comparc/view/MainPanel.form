@@ -562,8 +562,8 @@
               <Table columnCount="4" rowCount="1024">
                 <Column editable="false" title="Address" type="java.lang.Byte"/>
                 <Column editable="false" title="Instruction" type="java.lang.String"/>
-                <Column editable="false" title="Opcode (Hex)" type="java.lang.String"/>
                 <Column editable="true" title="Label" type="java.lang.String"/>
+                <Column editable="false" title="Opcode (Hex)" type="java.lang.String"/>
               </Table>
             </Property>
           </Properties>

@@ -2327,14 +2327,14 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
                 {null, null, null, null}
             },
             new String [] {
-                "Address", "Instruction", "Opcode (Hex)", "Label"
+                "Address", "Instruction", "Label", "Opcode (Hex)"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.Byte.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, true, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -2608,12 +2608,13 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
 
     private void addbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbttnActionPerformed
         comm = commandcbox.getSelectedItem().toString();
-        addr = Integer.parseInt(codetbl.getValueAt(line, 0).toString());
+        addr = Integer.parseInt(codetbl.getValueAt(line, 0).toString());    // address of current line
         String immediate_value = offsettxt.getText();
         String opcode = null;
         Instruction inst;
+        
         /*
-         * disable unnecessary options
+         * create new instruction
          */
         switch (comm) {
             case "DADDU":
@@ -2622,7 +2623,7 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
             case "DSLLV":
             case "SLT":
                 inst = new RInstruction(comm, 'R', addr, rscbox.getSelectedIndex(), rtcbox.getSelectedIndex(), rdcbox.getSelectedIndex());
-                instring = inst.getInst();
+                instring = inst.getInst();  //get instruction string 
                 break;
             case "DADDIU":
             case "ANDI":
@@ -2642,8 +2643,8 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
                 break;
         }
         
-        codetbl.setValueAt(instring, line, 1);
-        InstructionList.addEntry(addr, inst);
+        codetbl.setValueAt(instring, line, 1);  //display instruction line 
+        InstructionList.addEntry(addr, inst);   //add entry to the instruction list
         line++;
         codetbl.repaint();
     }//GEN-LAST:event_addbttnActionPerformed
