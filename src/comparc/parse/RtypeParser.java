@@ -3,16 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package comparc.opcode;
+package comparc.parse;
 
 /**
  *
  * @author aids
  */
-public class RtypeParser extends Parser{
-    int temp;
-    @Override
-    public String genOpcode(String command, int param1, int param2, int param3) {
+public abstract class RtypeParser extends Parser{
+    
+        public static String genInst(String command, int param1, int param2, int param3){   //generate instruction line for R type
+        
+        inst = command+' '+'R'+param1+", "+'R'+param2+", "+'R'+param3;
+        
+        return inst;
+    }
+    
+    public static String genOpcode(String command, int param1, int param2, int param3) {
         /*
             Get function code from FunctionCode class
         */
@@ -41,16 +47,15 @@ public class RtypeParser extends Parser{
         extra = "00000";
         opcode = "000000";
         func = String.format("%6s", Integer.toBinaryString(fcode)).replace(' ', '0');
-        rd = String.format("%6s", Integer.toBinaryString(param1)).replace(' ', '0');
-        rs = String.format("%6s", Integer.toBinaryString(param2)).replace(' ', '0');
-        rt = String.format("%6s", Integer.toBinaryString(param3)).replace(' ', '0');
+        rd = String.format("%5s", Integer.toBinaryString(param1)).replace(' ', '0');
+        rs = String.format("%5s", Integer.toBinaryString(param2)).replace(' ', '0');
+        rt = String.format("%5s", Integer.toBinaryString(param3)).replace(' ', '0');
         
         /*
             combine binary and generate opcode in hex
         */
-        inst = opcode+rs+rt+rd+extra+func;
-        temp = Integer.parseInt(inst, 2);
-        inst = String.format("%8s",Integer.toHexString(temp).toUpperCase()).replace(' ', '0');
+        bin = opcode+rs+rt+rd+extra+func;
+        inst = creatOpcode(bin);
             
         return inst;
     }

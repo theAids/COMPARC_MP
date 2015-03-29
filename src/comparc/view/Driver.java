@@ -6,12 +6,12 @@
 package comparc.view;
 
 import javax.swing.JFrame;
-
 /**
  *
  * @author aids
  */
 public class Driver {
+    
     
     public static void main (String[] args) {
         JFrame frame = new JFrame ("Group 4");

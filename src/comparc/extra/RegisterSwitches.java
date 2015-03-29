@@ -12,7 +12,7 @@ import javax.swing.table.TableModel;
 public class RegisterSwitches {
     
     public RegisterSwitches(){
-        String reg_status[] = new String[32];
+        //String reg_status[] = new String[32];
     }
     
     public static int rowNum(String reg){
