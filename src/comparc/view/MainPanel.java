@@ -38,9 +38,10 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
     byte rt_cont;
     RegisterSwitches RSCase = new RegisterSwitches();
     //byte/int for textbox
-    
-    
-    
+
+    int lin = 0, comm_count = 0;
+    String[] imm_storage = new String[15];
+    String reg_status[] = new String[32];
 
     public MainPanel() {
         initComponents();
@@ -74,6 +75,10 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
         }
         
         offsettxt.disable();
+        
+        for(int i = 0 ; i<32 ; i++){
+            reg_status[i] = "NOT IN USE";
+        }
     }
 
     /**
@@ -2610,7 +2615,12 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
         comm = commandcbox.getSelectedItem().toString();
         addr = Integer.parseInt(codetbl.getValueAt(line, 0).toString());    // address of current line
         String immediate_value = offsettxt.getText();
+        
+        String insta = null;
         String opcode = null;
+        String reformat = null;
+
+        //String opcode = null;
         Instruction inst;
         
         /*
@@ -2629,6 +2639,15 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
             case "ANDI":
             case "LWU":
             case "LW":
+                if(RSCase.checkIfHex(immediate_value)==true){
+                    reformat = String.format("%16s", immediate_value).replace(' ', '0');
+                    imm_storage[comm_count]=reformat;
+                    
+                }
+                else{
+                    //nope
+                }
+          
                 inst = new IInstruction(comm, 'I', addr, rscbox.getSelectedIndex(), rdcbox.getSelectedIndex(), offsettxt.getText());
                 instring = inst.getInst();
                 break;
@@ -2647,6 +2666,9 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
         InstructionList.addEntry(addr, inst);   //add entry to the instruction list
         line++;
         codetbl.repaint();
+        comm_count++;
+        
+
     }//GEN-LAST:event_addbttnActionPerformed
 
     private void fullstepbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fullstepbttnActionPerformed
@@ -2664,10 +2686,13 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
         }
         else{
             int row;
-            row = RegisterSwitches.rowNum(rs);
+            row = RSCase.rowNum(rs);
             //registertbl.setValueAt(row, row, 2);
-            //if {commtype = "I-Type"} ... etc
+            if (commtype == "I-Type"){
+                
+            }
         }
+        
     }//GEN-LAST:event_singlestepbttn1ActionPerformed
 
     private void resetbttn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetbttn1ActionPerformed
@@ -2681,6 +2706,7 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
     private void rdcboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdcboxActionPerformed
         // TODO add your handling code here:
         rd = rdcbox.getSelectedItem().toString();
+        //use
     }//GEN-LAST:event_rdcboxActionPerformed
 
 

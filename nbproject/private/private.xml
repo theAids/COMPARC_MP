@@ -3,15 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/aids/Documents/Git/COMPARC_MP/src/comparc/parse/Parser.java</file>
-            <file>file:/Users/aids/Documents/Git/COMPARC_MP/src/comparc/instruction/RInstruction.java</file>
-            <file>file:/Users/aids/Documents/Git/COMPARC_MP/src/comparc/parse/RtypeParser.java</file>
-            <file>file:/Users/aids/Documents/Git/COMPARC_MP/src/comparc/view/MainPanel.java</file>
-            <file>file:/Users/aids/Documents/Git/COMPARC_MP/src/comparc/parse/JtypeParser.java</file>
-            <file>file:/Users/aids/Documents/Git/COMPARC_MP/src/comparc/instruction/Instruction.java</file>
-            <file>file:/Users/aids/Documents/Git/COMPARC_MP/src/comparc/instruction/JInstruction.java</file>
-            <file>file:/Users/aids/Documents/Git/COMPARC_MP/src/comparc/parse/ItypeParser.java</file>
-            <file>file:/Users/aids/Documents/Git/COMPARC_MP/src/comparc/instruction/IInstruction.java</file>
+            <file>file:/C:/Users/Tricia/Desktop/COMPARC_MP/src/comparc/parse/ItypeParser.java</file>
+            <file>file:/C:/Users/Tricia/Desktop/COMPARC_MP/src/comparc/parse/Parser.java</file>
+            <file>file:/C:/Users/Tricia/Desktop/COMPARC_MP/src/comparc/view/MainPanel.java</file>
         </group>
     </open-files>
 </project-private>
