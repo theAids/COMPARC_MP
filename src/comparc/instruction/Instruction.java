@@ -82,8 +82,6 @@ public abstract class Instruction {
     public void setBin(String bin) {
         this.bin = bin;
     }
-    
-    public abstract String getInst();
 
     /**
      * @return the addr
@@ -97,6 +95,11 @@ public abstract class Instruction {
      */
     public void setAddr(int addr) {
         this.addr = addr;
+    }
+    
+    
+    public String getInst(){
+        return null;
     }
     
 }

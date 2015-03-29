@@ -25,6 +25,10 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
      */
     String comm; //mips64 command variable
     int addr;
+    String instring;
+    static int line = 0;
+    
+    
     String commtype;
     String rd;
     String rs;
@@ -34,11 +38,8 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
     byte rt_cont;
     RegisterSwitches RSCase = new RegisterSwitches();
     //byte/int for textbox
-    static int line = 0;
     
-    Instruction rinst;
-    Instruction iinst;
-    Instruction jinst;
+    
     
 
     public MainPanel() {
@@ -2552,6 +2553,7 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
          */
 
         //String commandName = "";
+        
 
         switch (comm) {
             case "DADDU":
@@ -2608,10 +2610,8 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
         comm = commandcbox.getSelectedItem().toString();
         addr = Integer.parseInt(codetbl.getValueAt(line, 0).toString());
         String immediate_value = offsettxt.getText();
-
-        String inst = null;
         String opcode = null;
-        
+        Instruction inst;
         /*
          * disable unnecessary options
          */
@@ -2621,29 +2621,29 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
             case "OR":
             case "DSLLV":
             case "SLT":
-                rinst = new RInstruction(comm, 'R', addr, rscbox.getSelectedIndex(), rtcbox.getSelectedIndex(), rdcbox.getSelectedIndex());
-                inst = rinst.getInst();
+                inst = new RInstruction(comm, 'R', addr, rscbox.getSelectedIndex(), rtcbox.getSelectedIndex(), rdcbox.getSelectedIndex());
+                instring = inst.getInst();
                 break;
             case "DADDIU":
             case "ANDI":
             case "LWU":
             case "LW":
-                iinst = new IInstruction(comm, 'I', addr, rscbox.getSelectedIndex(), rdcbox.getSelectedIndex(), offsettxt.getText());
-                inst = iinst.getInst();
+                inst = new IInstruction(comm, 'I', addr, rscbox.getSelectedIndex(), rdcbox.getSelectedIndex(), offsettxt.getText());
+                instring = inst.getInst();
                 break;
             case "BNE":
             case "SW":
-                iinst = new IInstruction(comm, 'I', addr, rscbox.getSelectedIndex(), rtcbox.getSelectedIndex(), offsettxt.getText());
-                inst = iinst.getInst();
+                inst = new IInstruction(comm, 'I', addr, rscbox.getSelectedIndex(), rtcbox.getSelectedIndex(), offsettxt.getText());
+                instring = inst.getInst();
                 break;
             default:
-                jinst = new JInstruction(comm, 'J', addr, offsettxt.getText());
-                inst = jinst.getInst();
+                inst = new JInstruction(comm, 'J', addr, offsettxt.getText());
+                instring = inst.getInst();
                 break;
         }
         
-        codetbl.setValueAt(inst, line, 1);
-        //codetbl.setValueAt(opcode, line, 1);
+        codetbl.setValueAt(instring, line, 1);
+        InstructionList.addEntry(addr, inst);
         line++;
         codetbl.repaint();
     }//GEN-LAST:event_addbttnActionPerformed
