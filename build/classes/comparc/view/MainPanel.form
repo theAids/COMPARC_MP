@@ -48,10 +48,6 @@
                               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                               <Component id="codelbl" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
-                              <Component id="datalbl" min="-2" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
@@ -88,14 +84,29 @@
                                   <Component id="offsetlbl" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="datalbl" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jScrollPane4" min="-2" pref="318" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="memtxt" min="-2" pref="208" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                                              <Component id="gomembttn" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane1" alignment="1" min="-2" pref="538" max="-2" attributes="0"/>
-                          <Component id="jScrollPane4" alignment="1" min="-2" pref="538" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jScrollPane1" min="-2" pref="538" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -129,9 +140,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="commandlbl" min="-2" max="-2" attributes="0"/>
                           <Component id="rdlbl" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="offsetlbl" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="rtlbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rtlbl" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
@@ -147,68 +158,74 @@
                       <Component id="jScrollPane3" min="-2" pref="568" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jScrollPane5" min="-2" pref="388" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="singlestepbttn1" alignment="3" min="-2" pref="84" max="-2" attributes="0"/>
-                                      <Component id="fullstepbttn" alignment="3" min="-2" pref="84" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="compilebttn" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="jScrollPane5" min="-2" pref="388" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="singlestepbttn1" alignment="3" min="-2" pref="84" max="-2" attributes="0"/>
+                                  <Component id="fullstepbttn" alignment="3" min="-2" pref="84" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="resetbttn1" min="-2" pref="84" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="clearbttn" min="-2" pref="84" max="-2" attributes="0"/>
-                                      <EmptySpace pref="9" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="compilebttn" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="commandcbox" min="-2" pref="29" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="offsettxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="addbttn" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="rtcbox" min="-2" max="-2" attributes="0"/>
-                                          <Component id="rscbox" min="-2" max="-2" attributes="0"/>
-                                          <Component id="rdcbox" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                                  </Group>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="resetbttn1" min="-2" pref="84" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                      <Component id="codelbl" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="delbttn" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="clearbttn" min="-2" pref="84" max="-2" attributes="0"/>
+                                  <EmptySpace pref="9" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" min="-2" pref="250" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="datalbl" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane4" min="-2" pref="226" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="commandcbox" min="-2" pref="29" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="offsettxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="addbttn" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="rtcbox" min="-2" max="-2" attributes="0"/>
+                                      <Component id="rscbox" min="-2" max="-2" attributes="0"/>
+                                      <Component id="rdcbox" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                  <Component id="codelbl" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="delbttn" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="250" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="datalbl" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jScrollPane4" min="-2" pref="226" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="memtxt" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="gomembttn" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
           </Group>
@@ -475,10 +492,9 @@
         <Component class="javax.swing.JTable" name="datatbl">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="3" rowCount="1024">
-                <Column editable="false" title="Address" type="java.lang.Byte"/>
-                <Column editable="true" title="Value" type="java.lang.Byte"/>
-                <Column editable="true" title="Label" type="java.lang.String"/>
+              <Table columnCount="2" rowCount="1024">
+                <Column editable="false" title="Address" type="java.lang.String"/>
+                <Column editable="true" title="Value" type="java.lang.Object"/>
               </Table>
             </Property>
           </Properties>
@@ -607,6 +623,18 @@
     <Component class="javax.swing.JButton" name="compilebttn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Compile"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Go to Memory:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="memtxt">
+    </Component>
+    <Component class="javax.swing.JButton" name="gomembttn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Go"/>
       </Properties>
     </Component>
   </SubComponents>
