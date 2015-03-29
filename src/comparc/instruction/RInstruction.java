@@ -24,7 +24,6 @@ public class RInstruction extends Instruction{
     
     public RInstruction(String command, char type, int addr, int rs, int rt, int rd) {
         super(command, type, addr);
-        parse = new RtypeParser();
     
         this.rs = rs;
         this.rd = rd;
@@ -90,7 +89,7 @@ public class RInstruction extends Instruction{
 
     @Override
     public String getInst() {
-        return parse.genInst(this.getCommand(), rs, rt, rd);
+        return RtypeParser.genInst(this.getCommand(), rs, rt, rd);
     }
     
     

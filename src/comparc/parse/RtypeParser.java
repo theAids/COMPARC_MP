@@ -9,19 +9,16 @@ package comparc.parse;
  *
  * @author aids
  */
-public class RtypeParser extends Parser{
+public abstract class RtypeParser extends Parser{
     
-    
-    @Override
-    public String genInst(String command, int param1, int param2, int param3){
+        public static String genInst(String command, int param1, int param2, int param3){   //generate instruction line for R type
         
         inst = command+' '+'R'+param1+", "+'R'+param2+", "+'R'+param3;
         
         return inst;
     }
     
-    @Override
-    public String genOpcode(String command, int param1, int param2, int param3) {
+    public static String genOpcode(String command, int param1, int param2, int param3) {
         /*
             Get function code from FunctionCode class
         */

@@ -9,14 +9,9 @@ package comparc.parse;
  *
  * @author aids
  */
-public class ItypeParser extends Parser{
+public abstract class ItypeParser extends Parser{
     
-     /*
-     * generate instruction string
-     */
-    
-    @Override
-    public String genInst(String command, int param1, int param2, String param3){
+    public static String genInst(String command, int param1, int param2, String param3){    //generate instruction line for I type
         
         
         switch (command) {
@@ -39,8 +34,7 @@ public class ItypeParser extends Parser{
         return inst;
     }
 
-    @Override
-    public String genOpcode(String command, int param1, int param2, int param3) {
+    public static String genOpcode(String command, int param1, int param2, int param3) {
     
         
         switch (command) {

@@ -11,44 +11,25 @@ package comparc.parse;
  */
 public abstract class Parser {
     
-    String inst;
-    String rd;
-    String rs;
-    String rt;
-    String offset;
-    String func;
-    String opcode;
-    String extra;
-    String bin;
-    int fcode;
+    static String inst;
+    static String rd;
+    static String rs;
+    static String rt;
+    static String offset;
+    static String func;
+    static String opcode;
+    static String extra;
+    static String bin;
+    static int fcode;
 
     public Parser(){
     
     }
-    
-    public String genInst(String command, int param1, int param2, int param3){
-        return inst;
-    }
-
-    public String genInst(String command, int param1, int param2, String param3){
-        return inst;
-    }
-    
-
-    public String genInst(String command, String param1){
-        
-        inst = command+' '+param1;
-        
-        return inst;
-    }
-    
-    /*
-     * generate opcode R and I type
+    /**
+     * generate opcode from binary
      */
     
-    public abstract String genOpcode(String command, int param1, int param2, int param3);
-    
-    public String creatOpcode(String bin){
+    protected static String creatOpcode(String bin){
         int temp;
         
         temp = Integer.parseInt(bin, 2);

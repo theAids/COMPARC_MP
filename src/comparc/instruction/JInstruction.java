@@ -21,7 +21,6 @@ public class JInstruction extends Instruction{
 
     public JInstruction(String command, char type, int addr,String offset) {
         super(command, type, addr);
-        parse = new JtypeParser();
         this.offset = offset;
     }
 
@@ -41,7 +40,7 @@ public class JInstruction extends Instruction{
 
     @Override
     public String getInst() {
-        return parse.genInst(this.getCommand(), offset);
+        return JtypeParser.genInst(this.getCommand(), offset);
     }
     
 }

@@ -24,7 +24,6 @@ public class IInstruction extends Instruction{
     
     public IInstruction(String command, char type, int addr, int rs, int rd, String offset) {
         super(command, type, addr);
-        parse = new ItypeParser();
         this.rs = rs;
         this.rd = rd;
         this.offset = offset;
@@ -74,7 +73,7 @@ public class IInstruction extends Instruction{
 
     @Override
     public String getInst() {
-        return parse.genInst(this.getCommand(), rs, rd, offset);
+        return ItypeParser.genInst(this.getCommand(), rs, rd, offset);
     }
     
 }

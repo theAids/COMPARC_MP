@@ -2626,8 +2626,6 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
         //codetbl.setValueAt(opcode, line, 1);
         line++;
         codetbl.repaint();
-
-        
     }//GEN-LAST:event_addbttnActionPerformed
 
     private void fullstepbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fullstepbttnActionPerformed

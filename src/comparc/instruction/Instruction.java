@@ -18,7 +18,6 @@ public abstract class Instruction {
     private String bin;
     private int addr;
     private char type;
-    Parser parse;
 
    
     public Instruction(){

@@ -9,10 +9,13 @@ package comparc.parse;
  *
  * @author aids
  */
-public class JtypeParser extends Parser{
-
-    @Override
-    public String genOpcode(String command, int param1, int param2, int param3) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+public abstract class JtypeParser extends Parser{
+    
+    public static String genInst(String command, String param1){    //generate instuction line for J type
+        
+        inst = command+' '+param1;
+        
+        return inst;
     }
+   
 }
