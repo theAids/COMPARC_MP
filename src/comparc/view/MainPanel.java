@@ -39,10 +39,12 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
     RegisterSwitches RSCase = new RegisterSwitches();
     //byte/int for textbox
 
+
     //static int line = 0;
     //Parser rparse = new RtypeParser();
     //Parser iparse = new ItypeParser();
     //Parser jparse = new JtypeParser();
+
     int lin = 0, comm_count = 0;
     String[] imm_storage = new String[15];
     String reg_status[] = new String[32];
@@ -2336,14 +2338,14 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
                 {null, null, null, null}
             },
             new String [] {
-                "Address", "Instruction", "Opcode (Hex)", "Label"
+                "Address", "Instruction", "Label", "Opcode (Hex)"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.Byte.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, true, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -2623,7 +2625,7 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
 
     private void addbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbttnActionPerformed
         comm = commandcbox.getSelectedItem().toString();
-        addr = Integer.parseInt(codetbl.getValueAt(line, 0).toString());
+        addr = Integer.parseInt(codetbl.getValueAt(line, 0).toString());    // address of current line
         String immediate_value = offsettxt.getText();
         
         String insta = null;
@@ -2632,9 +2634,9 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
 
         //String opcode = null;
         Instruction inst;
-
+        
         /*
-         * disable unnecessary options
+         * create new instruction
          */
         switch (comm) {
             case "DADDU":
@@ -2643,7 +2645,7 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
             case "DSLLV":
             case "SLT":
                 inst = new RInstruction(comm, 'R', addr, rscbox.getSelectedIndex(), rtcbox.getSelectedIndex(), rdcbox.getSelectedIndex());
-                instring = inst.getInst();
+                instring = inst.getInst();  //get instruction string 
                 break;
             case "DADDIU":
             case "ANDI":
@@ -2658,6 +2660,7 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
                     //nope
                 }
           
+
                 //inst = iparse.genInst(commandcbox.getSelectedItem().toString(), rdcbox.getSelectedItem().toString(), rscbox.getSelectedItem().toString(), immediate_value);
 
                 inst = new IInstruction(comm, 'I', addr, rscbox.getSelectedIndex(), rdcbox.getSelectedIndex(), offsettxt.getText());
@@ -2674,8 +2677,8 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
                 break;
         }
         
-        codetbl.setValueAt(instring, line, 1);
-        InstructionList.addEntry(addr, inst);
+        codetbl.setValueAt(instring, line, 1);  //display instruction line 
+        InstructionList.addEntry(addr, inst);   //add entry to the instruction list
         line++;
         codetbl.repaint();
         comm_count++;
