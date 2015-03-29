@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package comparc.opcode;
+package comparc.parse;
 
 /**
  *
@@ -14,21 +14,23 @@ public class ItypeParser extends Parser{
      /*
      * generate instruction string
      */
+    
     @Override
-    public String genInst(String command, String param1, String param2, String param3){
+    public String genInst(String command, int param1, int param2, String param3){
+        
         
         switch (command) {
             case "DADDIU":
             case "ANDI":
-                inst = command+' '+param1+", "+param2+", "+param3;
+                inst = command+' '+'R'+param2+", "+'R'+param1+", "+param3;
                 break;
             case "LWU":
             case "LW":
             case "SW":
-                inst = command+' '+param1+", "+param3+"("+param2+")";
+                inst = command+' '+'R'+param2+", "+param3+"("+'R'+param1+")";
                 break;
             case "BNE":
-                inst = command+' '+param2+", "+param1+", "+param3;
+                inst = command+' '+'R'+param1+", "+'R'+param2+", "+param3;
                 break;
             default:
                 break;
@@ -64,6 +66,25 @@ public class ItypeParser extends Parser{
                 break;
         }
         
+        opcode = String.format("%6s", Integer.toBinaryString(fcode)).replace(' ', '0');
+        rd = String.format("%5s", Integer.toBinaryString(param1)).replace(' ', '0');
+        rs = String.format("%5s", Integer.toBinaryString(param2)).replace(' ', '0');
+        
+        switch(command){
+            case "DADDIU":
+            case "ANDI":
+            case "LWU":
+            case "LW":
+            case "SW":
+                offset = String.format("%16s", Integer.toBinaryString(param3)).replace(' ', '0');
+                break;
+            case "BNE":
+            
+                break;
+        }
+        
+        bin = opcode+rs+rd+offset;
+        inst = creatOpcode(bin);
         return inst;
     }
     

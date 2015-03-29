@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package comparc.opcode;
+package comparc.parse;
 
 /**
  *
@@ -19,26 +19,21 @@ public abstract class Parser {
     String func;
     String opcode;
     String extra;
+    String bin;
     int fcode;
 
     public Parser(){
     
     }
     
+    public String genInst(String command, int param1, int param2, int param3){
+        return inst;
+    }
 
-    /*
-     * generate instruction string R and I type
-     */
-    public String genInst(String command, String param1, String param2, String param3){
-        
-        inst = command+' '+param1+", "+param2+", "+param3;
-        
+    public String genInst(String command, int param1, int param2, String param3){
         return inst;
     }
     
-    /*
-     * generate instruction string J type
-     */
 
     public String genInst(String command, String param1){
         
@@ -52,6 +47,15 @@ public abstract class Parser {
      */
     
     public abstract String genOpcode(String command, int param1, int param2, int param3);
+    
+    public String creatOpcode(String bin){
+        int temp;
+        
+        temp = Integer.parseInt(bin, 2);
+        
+        return String.format("%8s",Integer.toHexString(temp).toUpperCase()).replace(' ', '0');
+        
+    }
     
     
 }

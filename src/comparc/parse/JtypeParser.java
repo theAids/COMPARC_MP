@@ -3,26 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package comparc.opcode;
+package comparc.parse;
 
 /**
  *
  * @author aids
  */
 public class JtypeParser extends Parser{
-    
-    public JtypeParser(){
-        super();
-    }
-    
-    //@Override
-    public String genInst(String command, String param1, String param2, String param3){
-        String inst;
-        
-        inst = command+' '+param1;
-        
-        return inst;
-    }
 
     @Override
     public String genOpcode(String command, int param1, int param2, int param3) {
