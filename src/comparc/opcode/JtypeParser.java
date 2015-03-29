@@ -16,11 +16,16 @@ public class JtypeParser extends Parser{
     }
     
     //@Override
-    private String genInst(String command, String param1, String param2, String param3){
+    public String genInst(String command, String param1, String param2, String param3){
         String inst;
         
         inst = command+' '+param1;
         
         return inst;
+    }
+
+    @Override
+    public String genOpcode(String command, int param1, int param2, int param3) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

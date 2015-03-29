@@ -19,6 +19,7 @@ public abstract class FunctionCode {
     public static final int BNE = 5;
     public static final int LW = 35;
     public static final int LWU = 39;
+    public static final int SW = 43;
     public static final int DADDIU = 25;
     public static final int ANDI = 12;
     public static final int J = 2;

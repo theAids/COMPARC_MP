@@ -29,6 +29,12 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
     byte rt_cont;
     RegisterSwitches RSCase = new RegisterSwitches();
     //byte/int for textbox
+    static int line = 0;
+    Parser rparse = new RtypeParser();
+    Parser iparse = new ItypeParser();
+    Parser jparse = new JtypeParser();
+    
+
     public MainPanel() {
         initComponents();
         initialize();
@@ -2507,7 +2513,9 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
         /*
          * disable unnecessary options
          */
+
         //String commandName = "";
+
         switch (comm) {
             case "DADDU":
             case "DMULT":
@@ -2544,6 +2552,7 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
                 break;
         }
         
+        offsettxt.setText("");
         this.repaint();
         
         
@@ -2560,7 +2569,12 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
 
     private void addbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbttnActionPerformed
         comm = commandcbox.getSelectedItem().toString();
+
         String immediate_value = offsettxt.getText();
+
+        String inst = null;
+        String opcode = null;
+        
         /*
          * disable unnecessary options
          */
@@ -2570,7 +2584,9 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
             case "OR":
             case "DSLLV":
             case "SLT":
-                
+                inst = rparse.genInst(commandcbox.getSelectedItem().toString(), rdcbox.getSelectedItem().toString(), rscbox.getSelectedItem().toString(), rtcbox.getSelectedItem().toString());
+                opcode = rparse.genOpcode(commandcbox.getSelectedItem().toString(), rdcbox.getSelectedIndex(), rscbox.getSelectedIndex(), rtcbox.getSelectedIndex());
+
                 break;
             case "DADDIU":
             case "ANDI":
@@ -2582,17 +2598,23 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
                 else{
                     //nope
                 }
+          
+                inst = iparse.genInst(commandcbox.getSelectedItem().toString(), rdcbox.getSelectedItem().toString(), rscbox.getSelectedItem().toString(), offsettxt.getText());
                 break;
             case "BNE":
             case "SW":
-                
+                inst = iparse.genInst(commandcbox.getSelectedItem().toString(), rtcbox.getSelectedItem().toString(), rscbox.getSelectedItem().toString(), offsettxt.getText());
                 break;
             default:
-                
+                inst = jparse.genInst(commandcbox.getSelectedItem().toString(), offsettxt.getText());
                 break;
         }
         
-        this.repaint();
+        codetbl.setValueAt(inst, line, 2);
+        codetbl.setValueAt(opcode, line, 1);
+        line++;
+        codetbl.repaint();
+
         
     }//GEN-LAST:event_addbttnActionPerformed
 
