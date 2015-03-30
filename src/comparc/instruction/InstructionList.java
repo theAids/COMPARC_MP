@@ -29,9 +29,20 @@ public abstract class InstructionList {
          Map.Entry me = (Map.Entry)i.next();
          Instruction inst = (Instruction) me.getValue();
          System.out.println(inst.getAddr());
-      }
-        
-        
+      }    
     }
+    
+    public static Iterator getEntry(){
+        Set set = codelist.entrySet();
+        Iterator i = set.iterator();
+        
+        return i;
+    }
+    
+    public static int getEntrySize(){
+        return codelist.size();
+    }
+    
+    
     
 }

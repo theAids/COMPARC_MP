@@ -5,6 +5,7 @@
  */
 package comparc.view;
 
+import comparc.compile.OpcodeCompiler;
 import comparc.parse.JtypeParser;
 import comparc.parse.RtypeParser;
 import comparc.parse.ItypeParser;
@@ -14,6 +15,8 @@ import javax.swing.event.*;
 import javax.swing.table.TableModel;
 import comparc.extra.RegisterSwitches;
 import comparc.instruction.*;
+import java.util.ArrayList;
+import java.util.Iterator;
 /**
  *
  * @author aids
@@ -2394,6 +2397,11 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
         });
 
         compilebttn.setText("Compile");
+        compilebttn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                compilebttnActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Go to Memory:");
 
@@ -2708,6 +2716,23 @@ public class MainPanel extends javax.swing.JPanel implements TableModelListener{
         rd = rdcbox.getSelectedItem().toString();
         //use
     }//GEN-LAST:event_rdcboxActionPerformed
+
+    private void compilebttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compilebttnActionPerformed
+        
+        ArrayList<String> opcodelist;
+        TableModel model = codetbl.getModel();
+        int x = 0;
+        
+        opcodelist = OpcodeCompiler.getOpcodes(model); //get list of opcodes
+        Iterator i = opcodelist.iterator();
+        
+        while(i.hasNext()){
+            codetbl.setValueAt(i.next().toString(), x, 3);  //populate opcode column
+            x++;
+        }
+        
+        codetbl.repaint();
+    }//GEN-LAST:event_compilebttnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

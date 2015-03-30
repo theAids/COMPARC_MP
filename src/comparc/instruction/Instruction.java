@@ -16,6 +16,7 @@ public abstract class Instruction {
     private String opcode;
     private String command;
     private String bin;
+    private int func;
     private int addr;
     private char type;
 
@@ -100,6 +101,20 @@ public abstract class Instruction {
     
     public String getInst(){
         return null;
+    }
+
+    /**
+     * @return the func
+     */
+    public int getFunc() {
+        return func;
+    }
+
+    /**
+     * @param func the func to set
+     */
+    public void setFunc(int func) {
+        this.func = func;
     }
     
 }

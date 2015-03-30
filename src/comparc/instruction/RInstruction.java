@@ -16,7 +16,6 @@ public class RInstruction extends Instruction{
     private int rs;
     private int rd;
     private int rt;
-    private int func;
     
     public RInstruction(){
         
@@ -28,7 +27,6 @@ public class RInstruction extends Instruction{
         this.rs = rs;
         this.rd = rd;
         this.rt = rt;
-        this.func = func;
     }
 
     /**
@@ -72,27 +70,11 @@ public class RInstruction extends Instruction{
     public void setRt(int rt) {
         this.rt = rt;
     }
-
-    /**
-     * @return the func
-     */
-    public int getFunc() {
-        return func;
-    }
-
-    /**
-     * @param func the func to set
-     */
-    public void setFunc(int func) {
-        this.func = func;
-    }
-
+    
     @Override
     public String getInst() {
         return RtypeParser.genInst(this.getCommand(), rs, rt, rd);
     }
-    
-    
-    
+  
     
 }

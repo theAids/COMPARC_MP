@@ -5,6 +5,8 @@
  */
 package comparc.parse;
 
+import comparc.instruction.IInstruction;
+
 /**
  *
  * @author aids
@@ -34,10 +36,10 @@ public abstract class ItypeParser extends Parser{
         return inst;
     }
 
-    public static String genOpcode(String command, int param1, int param2, int param3) {
+    public static String genOpcode(IInstruction inst) {
     
         
-        switch (command) {
+        switch (inst.getCommand()) {
             case "DADDIU":
                 fcode = FunctionCode.DADDIU;
                 break;
@@ -60,26 +62,30 @@ public abstract class ItypeParser extends Parser{
                 break;
         }
         
-        opcode = String.format("%6s", Integer.toBinaryString(fcode)).replace(' ', '0');
-        rd = String.format("%5s", Integer.toBinaryString(param1)).replace(' ', '0');
-        rs = String.format("%5s", Integer.toBinaryString(param2)).replace(' ', '0');
+        func = String.format("%6s", Integer.toBinaryString(fcode)).replace(' ', '0');
+        rd = String.format("%5s", Integer.toBinaryString(inst.getRd())).replace(' ', '0');
+        rs = String.format("%5s", Integer.toBinaryString(inst.getRs())).replace(' ', '0');
         
-        switch(command){
+        switch(inst.getCommand()){
             case "DADDIU":
             case "ANDI":
             case "LWU":
             case "LW":
             case "SW":
-                offset = String.format("%16s", Integer.toBinaryString(param3)).replace(' ', '0');
+                offset = String.format("%16s", Integer.toBinaryString(Integer.parseInt(inst.getOffset()))).replace(' ', '0');
                 break;
             case "BNE":
             
                 break;
         }
         
-        bin = opcode+rs+rd+offset;
-        inst = creatOpcode(bin);
-        return inst;
+        bin = func+rs+rd+offset;
+        opcode = creatOpcode(bin);
+        
+        inst.setFunc(fcode);
+        inst.setOpcode(opcode);
+        
+        return opcode;
     }
-    
+   
 }
